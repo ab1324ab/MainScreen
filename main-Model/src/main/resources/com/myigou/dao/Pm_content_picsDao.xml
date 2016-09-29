@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.myigou.dao.Pm_content_picsDao">
+    <select id="selectPic" parameterType="java.util.Map" resultMap="getpics">
+        SELECT * FROM Pm_content_pics limit #{min},#{max}
+    </select>
+    <resultMap id="getpics" type="com.myigou.nitiy.Pm_content_pics">
+        <id column="ID" property="id"></id>
+        <result column="PM_CP_SYSUUID" property="pmCpSysuuid"></result>
+        <result column="PM_CON_SYSUUID" property="pmConSysuuid"></result>
+        <result column="PM_PIC_URL" property="pmPicUrl"></result>
+        <result column="PM_PIC_TITLE" property="pmPicTitle"></result>
+        <result column="PM_PIC_DESC" property="pmPicDesc"></result>
+        <result column="PM_RELATE_URL" property="pmRelateUrl"></result>
+        <result column="PM_PIC_ORDER" property="pmPicOrder"></result>
+    </resultMap>
+    <select id="maxPic" resultType="java.lang.Integer">
+        SELECT COUNT(ID) FROM `Pm_content_pics` ORDER BY id
+    </select>
+
+
+
+
+</mapper>

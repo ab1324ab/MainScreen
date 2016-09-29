@@ -1,0 +1,251 @@
+﻿<script src="jquery.js" type="text/javascript"></script>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>
+        小看看
+    </title>
+    <link rel="shortcut icon" href="../images/bc.png">
+    <style type="text/css">
+        #qqq {
+            position: absolute;
+            height: 49px;
+            width: 82px;
+            left: 100px;
+            top: 106px;
+            text-align: center;
+            line-height: 0px;
+            background-image: url(tank.png);
+        }
+
+        .div3D {
+            position: absolute;
+            width: 52px;
+            height: 20px;
+            background-position: -49px -3px;
+            z-index: -1;
+        }
+
+        .div3DD {
+            position: absolute;
+            width: 43px;
+            height: 31px;
+            left: 330px;
+            top: 286px;
+            z-index: -2;
+            background-image: url(c4.png);
+            background-position: -35px -1px;
+        }
+    </style>
+</head>
+<script type="text/javascript">
+    var t;
+    var l;
+    var cn = 0;
+    document.onkeydown = function (event) {
+        event = event || window.event;
+        var keyCode = event.keyCode;
+        var a = document.getElementById("qqq");
+        l = parseFloat(a.style.left) || a.offsetLeft;
+        t = parseFloat(a.style.top) || a.offsetTop;
+        var s = $("#qqq");
+        s.text(keyCode);
+
+        if (keyCode == 38) {//按下上建
+            s.css("background-image", "url(tank4.png)")
+            s.css("background-position", "-57px 0px")
+            s.css("height", 48);
+            s.css("width", 52);
+            cn = 38;
+            tops = t - 10;
+            a.style.top = tops + "px";
+            s.text(keyCode);
+        }
+        else if (keyCode == 37) {//按下左建
+            s.css("background-image", "url(tank2.png)")
+            s.css("background-position", "0px 0px")
+            s.css("height", 49);
+            s.css("width", 82);
+            cn = 37;
+            lefts = l - 10;
+            a.style.left = lefts + "px";
+            s.text(keyCode);
+        }
+        else if (keyCode == 39) {//按下右建
+            s.css("background-image", "url(tank.png)")
+            s.css("background-position", "0px 0px")
+            s.css("height", 49);
+            s.css("width", 82);
+            cn = 39;
+            lefts = l + 10;
+            a.style.left = lefts + "px";
+            s.text(keyCode);
+        }
+        else if (keyCode == 40) {//按下下建
+            s.css("background-image", "url(tank3.png)");
+            s.css("background-position", "-54px 0px")
+            s.css("height", 53);
+            s.css("width", 52);
+            cn = 40;
+            tops = t + 10;
+            a.style.top = tops + "px";
+            s.text(keyCode);
+        } else if (keyCode == 32) {//按下空格键
+            var openDiv = document.createElement("div");
+            openDiv.id = "div3B";
+            var kkd = l;
+            openDiv.style.marginLeft = kkd;
+            openDiv.className = "div3D";
+            var kko = t;
+            openDiv.style.marginTop = kko;
+            openDiv.innerHTML = "";
+            document.body.appendChild(openDiv);
+            switch (cn) {
+                case 37:
+                    chu2(kkd);
+                    break;
+                case 38:
+                    chu3(kko - 30);
+                    break;
+                case 39:
+                    chu1(kkd);
+                    break;
+                case 40:
+                    chu4(kko - 10);
+                    break;
+            }
+        }
+    }
+    function chu1(kkd) {
+        kkd += 1;
+        $("#div3B").css("margin-left", kkd);
+        $("#div3B").css("background-image", "url(pao1.jpg)");
+        if (kkd > (l + 300)) {
+            var s = $("#div3B");
+            document.body.removeChild(s[0]);
+            return;
+        }
+        attack2(kkd);
+        setTimeout("chu1(" + kkd + ")", 5);
+    }
+    function chu2(kkd) {
+        kkd -= 1;
+        $("#div3B").css("margin-left", kkd);
+        $("#div3B").css("background-image", "url(pao2.jpg)");
+        if (kkd < (l - 300)) {
+            var s = $("#div3B");
+            document.body.removeChild(s[0]);
+            return;
+        }
+        attack2(kkd);
+        setTimeout("chu2(" + kkd + ")", 5);
+    }
+
+    function chu3(kko) {
+        kko -= 1;
+        $("#div3B").css("margin-top", kko);
+        $("#div3B").css("height", 47);
+        $("#div3B").css("width", 24);
+        $("#div3B").css("background-position", "-45px -1px");
+        $("#div3B").css("background-image", "url(pao4.jpg)");
+        if (kko < (t - 300)) {
+            var s = $("#div3B");
+            document.body.removeChild(s[0]);
+            return;
+        }
+        attack(kko);
+        setTimeout("chu3(" + kko + ")", 5);
+    }
+    function chu4(kko) {
+        kko += 1;
+        $("#div3B").css("margin-top", kko);
+        $("#div3B").css("height", 47);
+        $("#div3B").css("width", 24);
+        $("#div3B").css("background-position", "-45px -1px");
+        $("#div3B").css("background-image", "url(pao3.jpg)");
+        if (kko > (t + 300)) {
+            var s = $("#div3B");
+            document.body.removeChild(s[0]);
+            return;
+        }
+        attack(kko);
+        setTimeout("chu4(" + kko + ")", 5);
+    }
+    function attack(kko) {
+        var paotop = kko
+        var paoleft = conversion($("#qqq").css("left"));
+        var wwwwleft = conversion($("#wwww").css("left"));
+        var wwwwtop = conversion($("#wwww").css("top"));
+        if ((paotop == wwwwtop && paoleft == wwwwleft) || (paotop == wwwwtop && paoleft == wwwwleft + 10) ||
+                (paotop == wwwwtop && paoleft == wwwwleft + 20) || (paotop == wwwwtop && paoleft == wwwwleft - 10) ||
+                (paotop == wwwwtop && paoleft == wwwwleft - 10)) {
+            za();
+        }
+    }
+    function attack2(kkd) {
+        var paoleft = kkd;
+        var paotop = conversion($("#qqq").css("top"));
+        var wwwwleft = conversion($("#wwww").css("left"));
+        var wwwwtop = conversion($("#wwww").css("top"));
+        if ((paotop == wwwwtop && paoleft == wwwwleft) || (paotop == wwwwtop - 10 && paoleft == wwwwleft)
+                || (paotop == wwwwtop - 20 && paoleft == wwwwleft) || (paotop == wwwwtop - 30 && paoleft == wwwwleft) ||
+                (paotop == wwwwtop - 40 && paoleft == wwwwleft)) {
+            za();
+            document.body.removeChild(s[0]);
+        }
+    }
+    function conversion(enter) {
+        var mclength = enter.length;
+        //2px
+        if (mclength == 3) {
+            return parseInt(enter.substring(0, 1));
+        }
+        //22px
+        if (mclength == 4) {
+            return parseInt(enter.substring(0, 2));
+        }
+        //222px
+        if (mclength == 5) {
+            return parseInt(enter.substring(0, 3));
+        }
+        //2222px
+        if (mclength == 6) {
+            return parseInt(enter.substring(0, 4));
+        }
+        return enter;
+    }
+    function za() {
+        var wwww = $("#wwww");
+        //wwww.css("background-color","#03C");
+        wwww.css("background-image", "url(baoza.gif)");
+        wwww.css("background-position", "-6px -1px");
+        wwww.css("height", 137);
+        wwww.css("width", 155);
+        wwww.css("left", 281);
+        var s = $("#div3B");
+        document.body.removeChild(s[0]);
+    }
+</script>
+
+<body>
+<div id="qqq">
+</div>
+<div id="wwww" class="div3DD"></div>
+<input type="button" onClick="dian()" value="重置">
+<span>上,下,左,右,移动;空格放炮</span>
+<span>(能力有限,只作的出这么多粗糙了);代码就在页面上欢迎指导</span>
+</body>
+<script>
+    function dian() {
+        var ww = $("#wwww");
+        ww.css("background-image", "url(c4.png)");
+        ww.css("width", 43);
+        ww.css("height", 31);
+        ww.css("left", 330);
+        ww.css("top", 286);
+        ww.css("z-index", -2);
+        ww.css("background-position", "-35px -1px");
+    }
+</script>
+</html>

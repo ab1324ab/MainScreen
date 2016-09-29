@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.myigou.dao.MessageLeiDao">
+    <select id="selectAll" parameterType="java.util.Map" resultType="com.myigou.nitiy.MessageLei">
+        SELECT * FROM weixin.message WHERE isdel=1 ORDER BY weixin.message.messageTime DESC LIMIT #{min},#{max}
+    </select>
+    <insert id="insertThe" parameterType="com.myigou.nitiy.MessageLei">
+        INSERT INTO weixin.message VALUES(#{messageid},#{messagename},#{themessageip},#{messagecontent},#{messagetime},#{isdel})
+    </insert>
+    <delete id="delupdate" parameterType="java.lang.String">
+        UPDATE weixin.message SET isdel=0 WHERE messageid=#{0}
+    </delete>
+    <select id="allCount" resultType="java.lang.Integer">
+        SELECT COUNT(messageid) FROM weixin.message ORDER BY messageid
+    </select>
+</mapper>

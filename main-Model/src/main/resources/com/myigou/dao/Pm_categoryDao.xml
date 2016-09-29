@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.myigou.dao.Pm_categoryDao">
+      <select id="selectPm_category" resultMap="getPm_category" parameterType="java.util.Map" >
+          SELECT * FROM Pm_category limit #{min},#{max}
+      </select>
+      <resultMap id="getPm_category" type="com.myigou.nitiy.Pm_category">
+          <id column="ID" property="id"></id>
+          <result column="PM_CG_SYSUUID" property="pmCgSysuuid"></result>
+          <result column="PM_NAME" property="pmName"></result>
+          <result column="PM_MCH_ID" property="pmMchId"></result>
+          <result column="PM_PIC_BIG_URL" property="pmPicBigUrl"></result>
+          <result column="PM_PIC_SMALL_URL" property="pmPicSmallUrl"></result>
+          <result column="PM_FLAG" property="pmFlag"></result>
+          <result column="PM_CREATE_USER_ID" property="pmCreateUserId"></result>
+          <result column="PM_CREATE_TIME" property="pmCreateTime"></result>
+          <result column="PM_UPDATE_USER_ID" property="pmUpdateUserId"></result>
+          <result column="PM_UPDATE_TIME" property="pmUpdateTime"></result>
+          <result column="PM_DEL" property="pmDel"></result>
+      </resultMap>
+      <select id="maxPm_category" resultType="java.lang.Integer">
+          SELECT COUNT(ID) FROM `Pm_category` ORDER BY id
+      </select>
+</mapper>

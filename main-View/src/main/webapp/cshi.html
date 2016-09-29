@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+ <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+        <title>无标题文档</title>
+        <style>
+            #aa {
+                width: 500px;
+                height: 30px;
+                line-height: 30px;
+                background: red;
+            }
+             
+            #bb {
+                width: 500px;
+                height: 300px;
+                background: yellow;
+				text-align:center;
+				line-height:300px;
+            }
+             
+            #saa {
+                float: right;
+                color: #FFF;
+                font-weight: bold;
+                cursor: pointer;
+            }
+             
+            .a1 {
+				background-color:blue;
+				width: 100px;
+                height: 30px;
+				text-align:center;
+            }
+             
+            .a2 {
+	          background: blue;
+	          width: 100px;
+	          height: 30px;
+	          text-align:center;
+            }
+        </style>
+    </head>
+ 
+    <body>
+        <div id="aa">
+            <span id="saa" class="a1"></span>
+        </div>
+        <div id="bb">我欲成仙</div>
+        <span style="color:#090"></span>
+        <div style="width: 500px; height: 300px; background: green; display: none;"></div>
+        <script type="text/javascript">
+            function $(id){return document.getElementById(id)}
+             
+            var b = 300;
+            function aaa() {
+                var bb = document.getElementById('bb');
+                if(b <= 300) {
+                    b += 5;
+                    if (b > 300) {return;}
+                    bb.style.height = b+"px";
+					bb.style.lineHeight=b+"px";
+                }
+                setTimeout("aaa()", 50);
+            }
+            function bbb(){
+                var bb = document.getElementById('bb');
+                if(b >= 0){
+                    b -= 5;
+                    if (b < 0) {return;}
+                    bb.style.height = b+"px";
+					bb.style.lineHeight=b+"px";
+                }
+                setTimeout("bbb()", 50);
+            }
+             
+            $('saa').onclick = function() {
+                if($('saa').className == "a1"){
+                    //$("bb").style.display = "none";
+                    $('saa').className = "a2";
+					$('saa').innerText="关";
+                    //setTimeout("bbb()",1000);
+                    bbb();
+                } else {        
+                    //$("bb").style.display = "block";
+                    $('saa').className = "a1";
+                    $('saa').innerText="开";
+				    //setTimeout("aaa()",1000);
+                    aaa();
+                }            
+             }
+	     var score=34;
+		 if (score<60){
+			 document.write("不及格<br>")}
+			 else if(score<70){document.write("还好")}
+			 else if(score<80){document.write("良好")}
+			 else {document.write("优秀<br>")}
+		 for( var i=1;i<=9;i++)
+		 {
+			 for(var j=1;j<=i;j++)
+			 {
+				 document.write(i+"*"+j+" ");
+			 }
+			 document.write("<br>")
+		 }
+		 for(var s=0;s<100;s++){
+		 if(s%3==0){
+			 if(s%5!=0){
+				 document.write("&nbsp;"+s)}
+			 }
+		 }
+		 document.write("<br/>");
+		 
+		 var h=0;
+		 for(var o=1900;o<=3000;o++){
+			 if((o%4==0 & o%100!=0)|(o%400==0))
+			    {
+				  document.write(o+"&nbsp;");
+				  h++;
+				  if(h%5==0)
+				 {document.write("<br>")}}
+			 } 
+			  document.write("<br/>");
+		for(var sc=1;sc<=100;sc++){
+			if(sc%2==0){
+				document.write("<span style='color:#F00'>"+sc+"&nbsp;</span>");
+				}
+			else{
+				document.write("<span style='color:#090'>"+sc+"&nbsp;</span>");
+				}
+			}	 
+        </script>
+</html>

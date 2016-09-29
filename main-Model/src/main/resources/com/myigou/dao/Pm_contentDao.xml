@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.myigou.dao.Pm_contentDao">
+         <select id="selectContent" resultMap="getcontent" parameterType="java.util.Map">
+            SELECT * FROM Pm_content limit #{min},#{max}
+         </select>
+         <resultMap id="getcontent" type="com.myigou.nitiy.Pm_content">
+             <id column="ID" property="id"></id>
+             <result column="PM_CON_SYSUUID" property="pmConSysuuid"></result>
+             <result column="PM_CG_SYSUUID" property="pmCgSysuuid"></result>
+             <result column="PM_MCH_ID" property="pmMchId"></result>
+             <result column="PM_PIC_BIG_URL" property="pmPicBigUrl"></result>
+             <result column="PM_PIC_SMALL_URL" property="pmPicSmallUrl"></result>
+             <result column="PM_TITLE" property="pmTitle"></result>
+             <result column="PM_DESC" property="pmDesc"></result>
+             <result column="PM_CREATE_USER_ID" property="pmCreateUserId"></result>
+             <result column="PM_CREATE_TIME" property="pmCreateTime"></result>
+             <result column="PM_UPDATE_USER_ID" property="pmUpdateUserId"></result>
+             <result column="PM_UPDATE_TIME" property="pmUpdateTime"></result>
+             <result column="PM_DEL" property="pmDel"></result>
+             <!--错误找不到映射结果集 解决：办法在加一个resultMap，只是我暂时不需要直接注释-->
+             <!--<result column="PM_FAKE_READ" property="pmFakeRead"></result>
+             <result column="PM_FAKE_LIKE" property="pmFakeLike"></result>
+             <result column="PM_FAKE_SHARE" property="pmFakeShare"></result>-->
+         </resultMap>
+         <select id="maxContent" resultType="java.lang.Integer">
+            SELECT COUNT(ID) FROM `Pm_content` ORDER BY id
+         </select>
+
+
+</mapper>

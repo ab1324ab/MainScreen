@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/MainScreen.iml" filepath="$PROJECT_DIR$/MainScreen.iml" />
+      <module fileurl="file://$PROJECT_DIR$/main-Controller/main-Controller.iml" filepath="$PROJECT_DIR$/main-Controller/main-Controller.iml" />
+      <module fileurl="file://$PROJECT_DIR$/main-Model/main-Model.iml" filepath="$PROJECT_DIR$/main-Model/main-Model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/main-View/main-View.iml" filepath="$PROJECT_DIR$/main-View/main-View.iml" />
+    </modules>
+  </component>
+</project>
